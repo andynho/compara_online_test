@@ -24,6 +24,12 @@ describe('ProductTest', function () {
 
   describe('Validating prices modified', function() {
 
+       it('should not decrease if price is equal to 0', function () {
+          var dummyProduct = new Product("Dummy", 2, 0);
+          dummyProduct.modifyPrice();
+          assert.equal(dummyProduct.price, 0);
+        });
+
        it('should decrease price once', function () {
          var dummyProduct = new Product("Dummy", 2, 4);
          dummyProduct.modifyPrice();
