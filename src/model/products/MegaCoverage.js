@@ -8,8 +8,7 @@ class MegaCoverage extends Product {
   modifyPrice(){
   }
 
-  decreaseSellInDate() {
-    
+  decreaseSellInDate() {  
   }
 }
 

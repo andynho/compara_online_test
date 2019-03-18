@@ -1,6 +1,5 @@
 console.log("=================================================");
 
-const coTest = require('../src/coTest');
 const Product = require("../src/model/products/Product");
 const CarInsurance = require("../src/model/CarInsurance");
 const MediumCoverage = require("../src/model/products/MediumCoverage");
