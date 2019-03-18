@@ -4,8 +4,8 @@
   "description": "ComparaOnline Software Engineer Test",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha spec/**/**.js",
-    "after-30-days" : "node src/after-30-days_runner.js"
+    "test": "nyc mocha spec/model/**/*.js spec/model/*.js",
+    "after-30-days": "node src/after-30-days_runner.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "mocha": "^4.0.1"
   },
   "dependencies": {
+    "chai-spies": "^1.0.0",
     "nyc": "^13.3.0"
   }
 }
