@@ -1,67 +1,56 @@
-class Product {
-  constructor(name, sellIn, price) {
-    this.name = name;
-    this.sellIn = sellIn;
-    this.price = price;
-  }
-}
 
 class CarInsurance {
   constructor(products = []) {
     this.products = products;
   }
+
   updatePrice() {
     for (var i = 0; i < this.products.length; i++) {
       if (this.products[i].name != 'Full Coverage' && this.products[i].name != 'Special Full Coverage') {
         if (this.products[i].price > 0) {
           if (this.products[i].name != 'Mega Coverage') {
-            this.products[i].price = this.products[i].price - 1;
+            //this.products[i].price = this.modifyPrice(this.products[i]);
+            this.products[i].modifyPrice();
           }
         }
       } else {
-        if (this.products[i].price < 50) {
-          this.products[i].price = this.products[i].price + 1;
-          if (this.products[i].name == 'Special Full Coverage') {
-            if (this.products[i].sellIn < 11) {
-              if (this.products[i].price < 50) {
-                this.products[i].price = this.products[i].price + 1;
-              }
-            }
-            if (this.products[i].sellIn < 6) {
-              if (this.products[i].price < 50) {
-                this.products[i].price = this.products[i].price + 1;
-              }
-            }
-          }
-        }
+          this.products[i].modifyPrice();
       }
-      if (this.products[i].name != 'Mega Coverage') {
-        this.products[i].sellIn = this.products[i].sellIn - 1;
-      }
-      if (this.products[i].sellIn < 0) {
+      this.products[i].decreaseSellInDate();
+
+      if (this.isExpiredDate(this.products[i])) {
         if (this.products[i].name != 'Full Coverage') {
           if (this.products[i].name != 'Special Full Coverage') {
-            if (this.products[i].price > 0) {
-              if (this.products[i].name != 'Mega Coverage') {
-                this.products[i].price = this.products[i].price - 1;
-              }
-            }
+            //if (this.products[i].price > 0) {
+            //  if (this.products[i].name != 'Mega Coverage') {
+                // this.products[i].price = this.products[i].price - 1;
+            //  }
+            //}
           } else {
-            this.products[i].price = this.products[i].price - this.products[i].price;
+            this.products[i].modifyPrice();
           }
         } else {
-          if (this.products[i].price < 50) {
-            this.products[i].price = this.products[i].price + 1;
-          }
+          // if (this.products[i].price < 50) {
+          //   this.products[i].price = this.products[i].price + 1;
+          // }
+            this.products[i].modifyPrice();
         }
       }
     }
 
     return this.products;
   }
+
+  isExpiredDate(product) {
+    if (product.sellIn < 0) {
+      return true;
+    }
+    return false;
+  }
+
+
 }
 
 module.exports = {
-  Product,
   CarInsurance
 }

@@ -5,6 +5,12 @@ class MegaCoverage extends Product {
     super("Mega Coverage", sellIn, price);
   }
 
+  modifyPrice(){
+  }
+
+  decreaseSellInDate() {
+    
+  }
 }
 
 module.exports = MegaCoverage;

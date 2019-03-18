@@ -370,4 +370,3 @@ Special Full Coverage, -15, 0
 Special Full Coverage, -20, 0
 Special Full Coverage, -25, 0
 Super Sale, -27, 0
-

@@ -1,7 +1,8 @@
-console.log("===================");
+console.log("=================================================");
+
 const coTest = require('../src/coTest');
-const CarInsurance = coTest.CarInsurance;
 const Product = require("../src/model/products/Product");
+const CarInsurance = require("../src/model/CarInsurance");
 const MediumCoverage = require("../src/model/products/MediumCoverage");
 const FullCoverage = require("../src/model/products/FullCoverage");
 const LowCoverage = require("../src/model/products/LowCoverage");
@@ -18,7 +19,7 @@ const productsAtDayZero = [
   new SpecialFullCoverage(15, 20),
   new SpecialFullCoverage(10, 49),
   new SpecialFullCoverage(5, 49),
-  new SuperSell(3, 6),
+  new SuperSell(3, 15),
 ];
 
 const carInsurance = new CarInsurance(productsAtDayZero);
@@ -29,7 +30,9 @@ const productPrinter = function (product) {
 for (let i = 1; i <= 30; i += 1) {
   console.log(`Day ${i}`);
   console.log('name, sellIn, price');
-  carInsurance.updatePrice().forEach(productPrinter);
+  carInsurance.updatePrice();
+  carInsurance.products.forEach(productPrinter);
   console.log('');
 }
-console.log("===================");
+
+console.log("==================================================");
